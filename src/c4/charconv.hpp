@@ -1116,7 +1116,7 @@ C4_ALWAYS_INLINE size_t itoa(substr buf, T v) noexcept
     }
     // when T is the min value (eg i8: -128), negating it
     // will overflow, so treat the min as a special case
-    else if(C4_LIKELY(v != std::numeric_limits<T>::min()))
+    else if(C4_LIKELY(v != (std::numeric_limits<T>::min)()))
     {
         v = -v;
         unsigned digits = digits_dec(v);
@@ -1148,7 +1148,7 @@ C4_ALWAYS_INLINE size_t itoa(substr buf, T v, T radix) noexcept
     #endif
     // when T is the min value (eg i8: -128), negating it
     // will overflow, so treat the min as a special case
-    if(C4_LIKELY(v != std::numeric_limits<T>::min()))
+    if(C4_LIKELY(v != (std::numeric_limits<T>::min)()))
     {
         unsigned pos = 0;
         if(v < 0)
@@ -1225,7 +1225,7 @@ C4_ALWAYS_INLINE size_t itoa(substr buf, T v, T radix, size_t num_digits) noexce
     #endif
     // when T is the min value (eg i8: -128), negating it
     // will overflow, so treat the min as a special case
-    if(C4_LIKELY(v != std::numeric_limits<T>::min()))
+    if(C4_LIKELY(v != (std::numeric_limits<T>::min)()))
     {
         unsigned pos = 0;
         if(v < 0)

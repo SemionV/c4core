@@ -1398,7 +1398,7 @@ from_chars_result_t<UC> parse_int_string(UC const* p, UC const* pend, T& value, 
 
   // check other types overflow
   if (!std::is_same<T, uint64_t>::value) {
-    if (i > uint64_t(std::numeric_limits<T>::max()) + uint64_t(negative)) {
+    if (i > (uint64_t)((std::numeric_limits<T>::max)()) + uint64_t(negative)) {
       answer.ec = std::errc::result_out_of_range;
       return answer;
     }
@@ -3449,7 +3449,7 @@ fastfloat_really_inline bool rounds_to_nearest() noexcept {
   // The value does not need to be std::numeric_limits<float>::min(), any small
   // value so that 1 + x should round to 1 would do (after accounting for excess
   // precision, as in 387 instructions).
-  static volatile float fmin = std::numeric_limits<float>::min();
+  static volatile float fmin = (std::numeric_limits<float>::min)();
   float fmini = fmin; // we copy it so that it gets loaded at most once.
   //
   // Explanation:

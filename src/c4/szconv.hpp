@@ -56,7 +56,7 @@ typename std::enable_if<is_narrower_size<SizeOut, SizeIn>::value, SizeOut>::type
 szconv(SizeIn sz)
 {
     C4_XASSERT(sz >= 0);
-    C4_XASSERT_MSG((SizeIn)sz <= (SizeIn)std::numeric_limits<SizeOut>::max(), "size conversion overflow: in=%zu", (size_t)sz);
+    C4_XASSERT_MSG((SizeIn)sz <= (SizeIn)(std::numeric_limits<SizeOut>::max)(), "size conversion overflow: in=%zu", (size_t)sz);
     SizeOut szo = static_cast<SizeOut>(sz);
     return szo;
 }
